@@ -19,4 +19,5 @@ Eesmärk oli luua võimalikult lihtsasti arusaadav CRUD rakendus, mis vastaks ko
 * Oleksin pidanud kohe alguses ikkagi giti kaudu seda tegema. AppCRUD on otsast lõpuni tehtud lokaalselt ning valminuna laetud üles giti.
 
 ## Mis veel vaja teha on?
-Teen kohe taskid gitis
+- [ ] #1
+- [ ] #2

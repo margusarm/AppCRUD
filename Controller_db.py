@@ -47,7 +47,7 @@ class Controller_db:
         self.reload_table()
         #print(update)
     
-    #lisab kirje andmebaasi    
+    #lisab kirje andmebaasi 
     def insert_value(self):
         word = simpledialog.askstring('Uus sõna', 'Sisesta uus sõna: ')
         category = simpledialog.askstring(f'{word}', f'Sisesta kategooria sõnale\n *{word}* ')
