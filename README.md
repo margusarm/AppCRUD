@@ -16,3 +16,5 @@ Eesmärk oli luua võimalikult lihtsasti arusaadav CRUD rakendus, mis vastaks ko
 See on minu jaoks esimene praktiliselt nullist oma pea ja google abiga tehtud rakendus. Ma ei laadinud alla valmis rakendust ja ei kohandanud seda, vaid püüdsin nullist teha rakendust, mida oma vaimusilmas ette kujutasin. Selles osas oli minu arvates väga silmi avardav kogemus. Varasematel kordadel on pigem tehtud nö koopiat juba valmis asjadest.
 
 Õppisin väga palju asju, sh seda, et ma ikka ei oska veel mitte midagi...
+
+Oleksin pidanud kohe alguses ikkagi giti kaudu seda tegema. AppCRUD on otsast lõpuni tehtud lokaalselt ning valminuna laetud üles giti.
