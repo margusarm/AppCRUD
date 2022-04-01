@@ -19,5 +19,5 @@ Eesmärk oli luua võimalikult lihtsasti arusaadav CRUD rakendus, mis vastaks ko
 * Oleksin pidanud kohe alguses ikkagi giti kaudu seda tegema. AppCRUD on otsast lõpuni tehtud lokaalselt ning valminuna laetud üles giti.
 
 ## Mis veel vaja teha on?
-- [ ] #1 Sõna lisamisel kategooria küsimiseks eraldi akent ei ole vaja
-- [ ] #2 lisa scrollbar
+- #1Sõna lisamisel kategooria küsimiseks eraldi akent ei ole vaja
+- #2 lisa scrollbar
