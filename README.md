@@ -17,7 +17,11 @@ Eesmärk oli luua võimalikult lihtsasti arusaadav CRUD rakendus, mis vastaks ko
 * See on minu jaoks esimene praktiliselt nullist oma pea ja google abiga tehtud rakendus. Ma ei laadinud alla valmis rakendust ja ei kohandanud seda, vaid püüdsin nullist teha rakendust, mida oma vaimusilmas ette kujutasin. Selles osas oli minu arvates väga silmi avardav kogemus. Varasematel kordadel on pigem tehtud nö koopiat juba valmis asjadest.
 * Õppisin väga palju asju, sh seda, et ma ikka ei oska veel mitte midagi...
 * Oleksin pidanud kohe alguses ikkagi giti kaudu seda tegema. AppCRUD on otsast lõpuni tehtud lokaalselt ning valminuna laetud üles giti.
+* Esimest korda elus puutun gitiga kokku (varem olen küll alla laadinud, aga mitte ise kasutanud). Ähmaselt saan juba vaikselt pihta, miks see hea on.
 
 ## Mis veel vaja teha on?
-- #1Sõna lisamisel kategooria küsimiseks eraldi akent ei ole vaja
+- #1 Sõna lisamisel kategooria küsimiseks eraldi akent ei ole vaja
 - #2 lisa scrollbar
+- ...
+
+Rakenduse arendamise käigus nägin, et mitmeid asju saaks teha paremini, seega list peaks olema märksa pikem
