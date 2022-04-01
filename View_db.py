@@ -51,7 +51,7 @@ class View_db(Tk):
         canvas.place(relx=0.5, rely=1.0, anchor=S) #all keskel
         return canvas
         
-    def view_values(self):
+    def view_values(self): # TODO #4 andmetest vaja võtta ka veeru pealkirjad ja teine veerg
         #!!!! vaata mingi samamoodi nagu on Entry ja Button on ka Canvas, sellega saab vast kõik keskele
         set = self.model_db.connection.execute('select id,word from words')
         bi = 0
