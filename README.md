@@ -4,7 +4,7 @@ Hangmani db CRUD app
 ## Mis app on?
 ![Rakenduse kuvatõmmis](main.png)
 
-*Tegemist on koolis poomismängu andmebaasi faili muutmiseks loodud rakendusega. Rakendust saab avada käivitades pythoniga fail AppCrud.py.
+- Tegemist on koolis poomismängu andmebaasi faili muutmiseks loodud rakendusega. Rakendust saab avada käivitades pythoniga fail AppCrud.py.
 Rakendus peaks olema ise ennast seletav ning kasutamine suuremahulist koolitust ei vaja.
 *Mitmed read koodi on ka rakenduses sees, millel funktsioon puudub, sest nad kaotasid töö käigus oma eesmärgi.
 Alles on nad seepärast, et hilisema arenduse käigus võib juhtuda, et leiavad rakendust.
