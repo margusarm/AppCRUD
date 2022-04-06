@@ -13,6 +13,7 @@ class Controller_db:
     
     
     #annab teada, mis on kirje id andmebaasis ja muudab update ja delete buttoni aktiivseks
+    #grid_forget() oli alguses plaanis, aga see jätab tegelikult mällu alles ja saab taastoota - võib segadust tekitada
     def view_button_id(self): 
         self.view_db.delete_button().config(state=NORMAL)
         self.view_db.update_button().config(state=NORMAL)
@@ -31,9 +32,6 @@ class Controller_db:
         cur = self.model_db.connection.cursor()
         cur.execute(sql, (id,))
         self.model_db.connection.commit()
-        #self.view_db.e.grid_forget() #kustutab aknas sõna
-        #self.view_db.rb.grid_forget() #kustutab aknas sõna ees radio buttoni
-        #print(id)
         self.reload_table()
     
     #sama, mis üleval, aga updateb
