@@ -70,6 +70,7 @@ class View_db(Tk):
             self.e = Entry(self.r_canvas, bd=0, bg='#F1F1F1', justify=CENTER)
             self.e.grid(row=self.i, column=1)
             self.e.insert(END,r[1])
+            self.e.configure(state=DISABLED, disabledforeground='black') # disabledbackgroundi vaja ka vahetada!!! muidu hall
             self.i += 1
 
         #selle jätan siia praegu alles, sest on hea koodijupp, millega saab teha mitme tulbaga tabelit.
