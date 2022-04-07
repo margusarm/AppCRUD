@@ -84,6 +84,7 @@ class View_db(Tk):
             self.e.grid(row=self.i, column=1)
             self.e2.grid(row=self.i, column=2)
             self.e.insert(END,r[1])
+            self.e.configure(state=DISABLED, disabledforeground='black') # disabledbackgroundi vaja ka vahetada!!! muidu hall
             self.e2.insert(END,r[2])
             self.e.config(state=DISABLED, disabledforeground='black')
             self.e2.config(state=DISABLED, disabledforeground='black')
