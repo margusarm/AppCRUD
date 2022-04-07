@@ -10,7 +10,7 @@ class View_db(Tk):
         self.model_db = Model_db()
         self.controller_db = controller_db
         #main window
-        self.minsize(250, 400) #sellest väiksemaks ei saa akent teha
+        self.minsize(300, 400) #sellest väiksemaks ei saa akent teha
         self.resizable(True, True)
         self.title('Words CRUD')
         
@@ -66,6 +66,8 @@ class View_db(Tk):
         self.heading_category = Entry(self.r_canvas,relief=RAISED, bg='#F1F1F1', justify=CENTER)
         self.heading_category.grid(row=0,column=2)
         self.heading_category.insert(END,keys[2].capitalize())
+        self.heading_word.config(state=DISABLED, disabledforeground='black') # värvi peab tagasi mustaks ka muutma, disabled peab pärast tekstisisestust olema
+        self.heading_category.config(state=DISABLED, disabledforeground='black')
         
         
         for value in self.set:
@@ -83,6 +85,8 @@ class View_db(Tk):
             self.e2.grid(row=self.i, column=2)
             self.e.insert(END,r[1])
             self.e2.insert(END,r[2])
+            self.e.config(state=DISABLED, disabledforeground='black')
+            self.e2.config(state=DISABLED, disabledforeground='black')
             self.i += 1
 
         #selle jätan siia praegu alles, sest on hea koodijupp, millega saab teha mitme tulbaga tabelit.
