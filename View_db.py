@@ -1,6 +1,8 @@
 from textwrap import fill
 from tkinter import *
+from tkinter import ttk
 from tkinter.simpledialog import askstring
+from turtle import bgcolor
 from Model_db import *
 
 class View_db(Tk):
@@ -16,7 +18,7 @@ class View_db(Tk):
         
         #frames & canvases | tegin canvastega selle pärast, et leidsin mõnusama viisi, kuidas aken käitub, kui teda suurendada
         self.first_frame = self.frame_1()
-        #self.second_frame = self.frame_2() #see on disabletud selle pärast, et hetkel kadus selle vajadus ära, aga veel ära ei kustuta, võib paranduse käigus vaja minna
+        self.second_frame = self.frame_2() #see on disabletud selle pärast, et hetkel kadus selle vajadus ära, aga veel ära ei kustuta, võib paranduse käigus vaja minna
         self.r_canvas = self.results_canvas()
         self.b_canvas = self.buttons_canvas()
         
@@ -44,6 +46,11 @@ class View_db(Tk):
     def results_canvas(self):
         canvas = Canvas(self.first_frame)
         canvas.place(relx=0.5, anchor=N)
+        #scrollbar ei saand tööle, siin õpetus, kuidas peaks saama: https://stackoverflow.com/questions/7727804/tkinter-using-scrollbars-on-a-canvas
+        v_scroll = ttk.Scrollbar(self.first_frame, orient='vertical', command=canvas.yview)
+        v_scroll.pack(side='right',fill='y')
+        canvas.config(yscrollcommand=v_scroll.set)
+        
         return canvas
     
     def buttons_canvas(self):
