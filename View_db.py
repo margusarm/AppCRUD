@@ -1,6 +1,8 @@
 from textwrap import fill
 from tkinter import *
+from tkinter import ttk
 from tkinter.simpledialog import askstring
+from turtle import bgcolor
 from Model_db import *
 
 class View_db(Tk):
@@ -10,7 +12,7 @@ class View_db(Tk):
         self.model_db = Model_db()
         self.controller_db = controller_db
         #main window
-        self.minsize(250, 400) #sellest väiksemaks ei saa akent teha
+        self.minsize(300, 400) #sellest väiksemaks ei saa akent teha
         self.resizable(True, True)
         self.title('Words CRUD')
         
@@ -43,7 +45,7 @@ class View_db(Tk):
     
     def results_canvas(self):
         canvas = Canvas(self.first_frame)
-        canvas.place(relx=0.5, anchor=N)
+        canvas.place(relx=0.5, anchor=N)       
         return canvas
     
     def buttons_canvas(self):
@@ -51,13 +53,25 @@ class View_db(Tk):
         canvas.place(relx=0.5, rely=1.0, anchor=S) #all keskel
         return canvas
         
-    def view_values(self): # TODO #4 andmetest vaja võtta ka veeru pealkirjad ja teine veerg
-        #!!!! vaata mingi samamoodi nagu on Entry ja Button on ka Canvas, sellega saab vast kõik keskele
-        set = self.model_db.connection.execute('select id,word from words')
-        bi = 0
-        self.i = 0
+    def view_values(self):
+        set = self.model_db.connection.execute('select id,word,category from words')
+        #keys = list(map(lambda x: x[0], set.description)) #võtab päringust välja tulba pealkirjad
+        keys = [description[0] for description in set.description] #alternatiivne meetod sql päringust pealkirjade võtmiseks, tundub lihtsam meelde jätta
+        bi = 1
+        self.i = 1
         self.var = IntVar() #siin oli vahepeal vaja meetodi väliseks teha, aga see vajadus langes ära. hetkel jätan nii, palju ei muutu
         self.set=set.fetchall() # peab vahepeal fetchall tegema, muidu teine for loop ei tööta (tühi)
+        # TODO #6 kogu see aken peab olema selline, et ei saaks klikkida mujal, kui rb ja nupud
+        self.heading_word = Entry(self.r_canvas,relief=RAISED, bg='#F1F1F1', justify=CENTER)
+        self.heading_word.grid(row=0,column=1)
+        self.heading_word.insert(END,keys[1].capitalize())
+        self.heading_category = Entry(self.r_canvas,relief=RAISED, bg='#F1F1F1', justify=CENTER)
+        self.heading_category.grid(row=0,column=2)
+        self.heading_category.insert(END,keys[2].capitalize())
+        self.heading_word.config(state=DISABLED, disabledforeground='black') # värvi peab tagasi mustaks ka muutma, disabled peab pärast tekstisisestust olema
+        self.heading_category.config(state=DISABLED, disabledforeground='black')
+        
+        
         for value in self.set:
             #print(value[0])
             self.rb = Radiobutton(self.r_canvas, variable = self.var, value=value[0], 
@@ -68,8 +82,14 @@ class View_db(Tk):
         
         for r in self.set:   #for loop nimetuste lugemiseks ja kuvamiseks
             self.e = Entry(self.r_canvas, bd=0, bg='#F1F1F1', justify=CENTER)
+            self.e2= Entry(self.r_canvas, bd=0, bg='#F1F1F1', justify=CENTER)
             self.e.grid(row=self.i, column=1)
+            self.e2.grid(row=self.i, column=2)
             self.e.insert(END,r[1])
+            self.e.configure(state=DISABLED, disabledforeground='black') # disabledbackgroundi vaja ka vahetada!!! muidu hall
+            self.e2.insert(END,r[2])
+            self.e.config(state=DISABLED, disabledforeground='black')
+            self.e2.config(state=DISABLED, disabledforeground='black')
             self.i += 1
 
         #selle jätan siia praegu alles, sest on hea koodijupp, millega saab teha mitme tulbaga tabelit.
@@ -81,7 +101,7 @@ class View_db(Tk):
             i += 1
         '''
     def delete_button(self):
-        b = Button(self.b_canvas, text='Delete', command=lambda:self.controller_db.delete_value(), state=DISABLED)
+        b = Button(self.b_canvas, text='Delete', command=lambda:self.controller_db.delete_value(), state=DISABLED) # Delete ja Update peavad alguses olema disabletud, sest kui radiobutton pole valitud, pole midagi kustutada
         b.grid(row=0, column=0, padx = 5, pady = 5)
         return b
         
