@@ -45,12 +45,7 @@ class View_db(Tk):
     
     def results_canvas(self):
         canvas = Canvas(self.first_frame)
-        canvas.place(relx=0.5, anchor=N)
-        #scrollbar ei saand tööle, siin õpetus, kuidas peaks saama: https://stackoverflow.com/questions/7727804/tkinter-using-scrollbars-on-a-canvas
-        v_scroll = ttk.Scrollbar(self.first_frame, orient='vertical', command=canvas.yview)
-        v_scroll.pack(side='right',fill='y')
-        canvas.config(yscrollcommand=v_scroll.set)
-        
+        canvas.place(relx=0.5, anchor=N)       
         return canvas
     
     def buttons_canvas(self):
