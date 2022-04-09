@@ -1,9 +1,11 @@
+from cgitb import text
+import tkinter
+from unicodedata import category
 from Model_db import *
 from View_db import *
 from tkinter import simpledialog
 
-class Controller_db:
-        
+class Controller_db:  
     def __init__(self):
         self.model_db = Model_db()
         self.view_db = View_db(self)
@@ -33,6 +35,8 @@ class Controller_db:
         cur.execute(sql, (id,))
         self.model_db.connection.commit()
         self.reload_table()
+        self.view_db.delete_button().config(state=DISABLED)
+        self.view_db.update_button().config(state=DISABLED)
     
     #sama, mis üleval, aga updateb
     def update_value(self):
@@ -43,21 +47,39 @@ class Controller_db:
         cur.execute(sql, update)
         self.model_db.connection.commit()
         self.reload_table()
+        self.view_db.update_button().config(state=DISABLED)
+        self.view_db.delete_button().config(state=DISABLED)
         #print(update)
     
     #lisab kirje andmebaasi 
-    def insert_value(self):
-        word = simpledialog.askstring('Uus sõna', 'Sisesta uus sõna: ')
-        category = simpledialog.askstring(f'{word}', f'Sisesta kategooria sõnale\n *{word}* ')
-        value = (f'{word}',f'{category}')
-        #value = ('lambikas')
-        sql = ''' INSERT INTO words(word,category)
-              VALUES(?,?) '''
-        cur = self.model_db.connection.cursor()
-        cur.execute(sql, value)
-        self.model_db.connection.commit()
-        self.reload_table()
         
+        
+    def ask_value (self):
+        ask = tkinter.Tk()
+        ask.title('Uue sõna lisamine')
+        ask.geometry('350x150')
+        ask.resizable(0,0)
+        global word, cat
+        
+        wordLabel = Label(ask, text= 'Sisesta uus sõna', pady=5, padx=5)
+        wordLabel.grid(row=0, column=0)
+        
+        word = Entry(ask, width=30)
+        word.grid(row=0, column=1)
+        
+        categoryLabel = Label(ask, text= 'Sisesta sõna kategooria', pady=5, padx=5)
+        categoryLabel.grid(row=1, column=0)
+        
+        cat = Entry(ask, width=30)
+        cat.grid(row=1, column=1)
+        
+        btn2 = Button(ask, text='Sisesta', command=lambda:self.close_ask(ask, word, cat), pady=5,padx=5)
+        btn2.grid(row=3, column=1)
+        
+    def close_ask (self, ask, word, cat):
+        self.model_db.insert_value(word, cat)
+        ask.destroy()
+        self.reload_table()
 
         
         
