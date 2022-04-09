@@ -111,7 +111,7 @@ class View_db(Tk):
         return b
         
     def insert_button(self):
-        b = Button(self.b_canvas, text='Insert', command=lambda:self.controller_db.insert_value())
+        b = Button(self.b_canvas, text='Insert', command=lambda:self.controller_db.ask_value())
         b.grid(row = 0, column = 2, padx = 5, pady = 5)
         return b
         
